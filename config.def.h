@@ -14,13 +14,17 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 #define ICONSPACING 5 /* space between icon and title */
 static const char *fonts[]          = { "monospace:size=12:pixelsize=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=12:pixelsize=12:antialias=true:autohint=true";
-static const char col_gray1[]       = "#222526";
-static const char col_gray2[]       = "#282b2c";
-static const char col_gray3[]       = "#5d6061";
-static const char col_gray4[]       = "#282b2c";
-static const char col_cyan[]        = "#d6b676";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
+
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
+//
+// theme
+/* #include "themes/nord.h" */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -39,6 +43,7 @@ static const char *const autostart[] = {
 	"flameshot", NULL,
 
 	"setxkbmap", "-option", "ctrl:nocaps", NULL,
+	"/bin/bash", "-c", "~/.dwm/scripts/dwm-status.sh", NULL,
 	NULL /* terminate */
 };
 
