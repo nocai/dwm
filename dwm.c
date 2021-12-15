@@ -549,7 +549,7 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - (int)status2dtextlength(stext) - getsystraywidth())
+		else if (ev->x > selmon->ww - status2dtextlength(stext) - getsystraywidth())
 			click = ClkStatusText;
 		else {
 			x += blw;
@@ -601,7 +601,7 @@ status2dtextlength(char* stext)
 			if (!isCode) {
 				isCode = 1;
 				text[i] = '\0';
-				w += TEXTW(text) - lrpad;
+				w += (int)TEXTW(text) - lrpad;
 				text[i] = '^';
 				if (text[++i] == 'f')
 					w += atoi(text + ++i);
@@ -613,7 +613,7 @@ status2dtextlength(char* stext)
 		}
 	}
 	if (!isCode)
-		w += TEXTW(text) - lrpad;
+		w += (int)TEXTW(text) - lrpad;
 	w += 2; /* 1px padding on both sides */
 
 	free(p);
@@ -948,11 +948,10 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	memcpy(text, stext, len);
 
 	/* compute width of the status text */
-	w = status2dtextlength(text);
+	ret = w = status2dtextlength(text);
 	text = p;
 
-	ret = x = m->ww - w;
-
+	x = m->ww - w;
 	if(showsystray && m == systraytomon(m))
 		x -= getsystraywidth();
 
@@ -1013,7 +1012,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	}
 
 	if (!isCode) {
-		w = TEXTW(text) - lrpad + 2; /* 2px extra right padding */
+		w = TEXTW(text) - lrpad;
 		drw_text(drw, x, 0, w, bh, 0, text, 0);
 	}
 
@@ -1041,7 +1040,7 @@ drawbar(Monitor *m)
 		// tw = TEXTW(stext) - lrpad / 2 + 2; /* 2px extra right padding */
 		// drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
 
-		tw = m->ww - drawstatusbar(m, bh, stext);
+		tw = drawstatusbar(m, bh, stext);
 	}
 
 	resizebarwin(m);
