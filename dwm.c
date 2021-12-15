@@ -555,12 +555,21 @@ buttonpress(XEvent *e)
 			x += blw;
 			c = m->clients;
 
+			int remainder = m->btw % m->bt;
+			int tabw = (1.0 / (double)m->bt) * m->btw + 1;
 			if (c) {
 				do {
 					if (!ISVISIBLE(c))
 						continue;
-					else
-						x += (1.0 / (double)m->bt) * m->btw;
+					else {
+						if (remainder >= 0) {
+							if (remainder == 0) {
+								tabw--;
+							}
+							remainder--;
+						}
+						x += tabw;
+					}
 				} while (ev->x > x && (c = c->next));
 
 				click = ClkWinTitle;
