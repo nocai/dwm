@@ -623,7 +623,6 @@ status2dtextlength(char* stext)
 	}
 	if (!isCode)
 		w += (int)TEXTW(text) - lrpad;
-	w += 2; /* 1px padding on both sides */
 
 	free(p);
 	return w;

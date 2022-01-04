@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -9,11 +9,11 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 #define ICONSIZE (bh - 4) /* or adaptively preserve 2 pixels each side */
 #define ICONSPACING 5 /* space between icon and title */
-static const char *fonts[]          = { "monospace:size=14:pixelsize=14:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=14:pixelsize=14:antialias=true:autohint=true";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=14:pixelsize=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size=14:pixelsize=14:antialias=true:autohint=true";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
@@ -32,18 +32,22 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-//
-// theme
-#include "themes/g.h" 
+
+
+static const char black[] = "#282828";
+static const char fg[] = "#fbf1c7";
+static const char gray[] = "#3c6842";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	/* [SchemeNorm] = { col_gray3, col_gray1, col_gray2 }, */
 	/* [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  }, */
 	/* [SchemeHid]  = { col_cyan,  col_gray1, col_cyan  }, */
-    [SchemeNorm]    = { pink, black, black },
-    [SchemeSel]     = { red, yellow,  red  },
-    [SchemeHid]     = { green, black, black },
+	
+	[SchemeSel]  = { fg,	gray,   gray  },
+	[SchemeNorm] = { fg,	black,	   black },
+	[SchemeHid]  = { fg,	black,	   black  },
 };
+
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
@@ -51,13 +55,18 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"nm-applet", NULL,
+	/* "nm-applet", NULL, */
 	"picom", "--experimental-backends", NULL,
 	"nitrogen", "--restore", NULL,
 	"flameshot", NULL,
 
-	"setxkbmap", "-option", "ctrl:nocaps", NULL,
-	"/bin/bash", "-c", "~/.dwm/scripts/dwm-status.sh", NULL,
+	/* "export", "_JAVA_AWT_WM_NONREPARENTING=1", NULL, */
+	/* "export", "AWT_TOOLKIT=MToolkit", NULL, */
+	/* "wmname", "LG3D", NULL, */
+
+	/* "setxkbmap", "-option", "ctrl:nocaps", NULL, */
+	// "/bin/bash", "-c", "~/.dwm/scripts/dwm-status.sh", NULL,
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 
@@ -71,6 +80,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "pcmanfm",  "pcmanfm",  NULL,       1,			1,           -1 },
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
