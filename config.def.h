@@ -12,8 +12,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 #define ICONSIZE (bh - 4) /* or adaptively preserve 2 pixels each side */
 #define ICONSPACING 5 /* space between icon and title */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=14:pixelsize=14:antialias=true:autohint=true" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size=14:pixelsize=14:antialias=true:autohint=true";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:Regular:size=12:pixelsize=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:Regular:size=12:pixelsize=14:antialias=true:autohint=true";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
