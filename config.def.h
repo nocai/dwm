@@ -12,8 +12,9 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 #define ICONSIZE (bh - 4) /* or adaptively preserve 2 pixels each side */
 #define ICONSPACING 5 /* space between icon and title */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:Regular:size=12:pixelsize=14:antialias=true:autohint=true" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:Regular:size=12:pixelsize=14:antialias=true:autohint=true";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:Regular:pixelsize=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:Regular:pixelsize=14:antialias=true:autohint=true";
+// static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:Regular:size=12:pixelsize=14:antialias=true:autohint=true";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
@@ -36,7 +37,7 @@ static const char col_cyan[]        = "#005577";
 
 static const char black[] = "#282828";
 static const char fg[] = "#fbf1c7";
-static const char gray[] = "#3c6842";
+static const char gray[] = "#424200";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	/* [SchemeNorm] = { col_gray3, col_gray1, col_gray2 }, */
