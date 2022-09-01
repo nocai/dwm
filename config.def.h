@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#include <X11/X.h>
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -120,6 +121,16 @@ static const Key keys[] = {
 	{ Mod1Mask,                     XK_space,  spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_x,	   spawn,          {.v = flameshotcmd } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = slockcmd } },
+
+    { MODKEY|ControlMask,  XK_Up,           movewin,          {.ui = UP} },              /* super ctrl up      |  移动窗口 */
+    { MODKEY|ControlMask,  XK_Down,         movewin,          {.ui = DOWN} },            /* super ctrl down    |  移动窗口 */
+    { MODKEY|ControlMask,  XK_Left,         movewin,          {.ui = LEFT} },            /* super ctrl left    |  移动窗口 */
+    { MODKEY|ControlMask,  XK_Right,        movewin,          {.ui = RIGHT} },           /* super ctrl right   |  移动窗口 */
+
+    { MODKEY|ShiftMask,     XK_Up,           resizewin,        {.ui = V_REDUCE} },        /* super ctrl up      |  调整窗口 */
+    { MODKEY|ShiftMask,     XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* super ctrl down    |  调整窗口 */
+    { MODKEY|ShiftMask,     XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* super ctrl left    |  调整窗口 */
+    { MODKEY|ShiftMask,     XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* super ctrl right   |  调整窗口 */
 };
 
 /* button definitions */
