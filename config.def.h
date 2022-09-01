@@ -72,6 +72,12 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
+static const char *slockcmd[]  = { "slock", NULL };
+static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
+
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -110,6 +116,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	// funcs
+	{ Mod1Mask,                     XK_space,  spawn,          {.v = roficmd } },
+	{ MODKEY|ShiftMask,             XK_x,	   spawn,          {.v = flameshotcmd } },
+	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = slockcmd } },
 };
 
 /* button definitions */
