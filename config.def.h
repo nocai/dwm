@@ -14,7 +14,7 @@ static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corne
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-#define ICONSIZE 16   /* icon size */
+#define ICONSIZE 14   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -92,7 +92,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	// { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -131,6 +132,10 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,     XK_Down,         resizewin,        {.ui = V_EXPAND} },        /* super ctrl down    |  调整窗口 */
     { MODKEY|ShiftMask,     XK_Left,         resizewin,        {.ui = H_REDUCE} },        /* super ctrl left    |  调整窗口 */
     { MODKEY|ShiftMask,     XK_Right,        resizewin,        {.ui = H_EXPAND} },        /* super ctrl right   |  调整窗口 */
+
+    /* spawn + SHCMD 执行对应命令 */
+    { ShiftMask|ControlMask, XK_c,          spawn,            SHCMD("xclip -o | xclip -selection c") },
+    // { MODKEY|ControlMask, XK_x,				spawn,            SHCMD("xprop") },
 };
 
 /* button definitions */
