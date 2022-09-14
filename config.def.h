@@ -74,6 +74,8 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, NULL };
 
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *slockcmd[]  = { "slock", NULL };
@@ -94,6 +96,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	// { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,						XK_q,      killclient,     {0} },
