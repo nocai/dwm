@@ -14,7 +14,7 @@ static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corne
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-#define ICONSIZE 14   /* icon size */
+#define ICONSIZE 12   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -44,6 +44,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "weixin",        NULL, NULL,       0,			1,           -1 },
+	{ "dingtalklinux", NULL, NULL,       0,			1,           -1 },
+	{ "Pcmanfm",       NULL, NULL,       0,			1,           -1 },
 };
 
 /* layout(s) */
